@@ -1,0 +1,15 @@
+{% extends "base" %}
+
+{% block mains %}
+<main>
+    <h2 id="subtitle">Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+    <address id="text">
+        Christopher Scholz<br>
+        An der Dahme 3<br>12527 Berlin
+    </address>
+    <h2 id="subtitle">Kontakt</h2>
+    <p id="text">
+        Email: <a href="mailto:website@christopher-scholz.com">website@christopher-scholz.com</a>
+    </p>
+</main>
+{% endblock mains %}

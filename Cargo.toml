@@ -1,0 +1,16 @@
+[package]
+name = "multi_page_website"
+version = "0.1.0"
+edition = "2021"
+authors = ["Christopher Scholz <github@christopher-scholz.com>"]
+description = "Personal static Multi-Page-Website for Christopher Scholz build with Rocket."
+repository = "https://github.com/christopherscholz/rust_multi_page_website"
+license = "MIT"
+
+[dependencies.rocket]
+version = "0.5.0-rc.2"
+features = []
+
+[dependencies.rocket_dyn_templates]
+version = "0.1.0-rc.2"
+features = ["tera"]

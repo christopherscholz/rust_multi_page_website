@@ -1,0 +1,8 @@
+{% extends "base" %}
+
+{% block mains %}
+<main>
+    <h2 id="subtitle">404</h2>
+    <p id="text">Page not found.</p>
+</main>
+{% endblock mains %}

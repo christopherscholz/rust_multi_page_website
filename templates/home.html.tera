@@ -1,0 +1,16 @@
+{% extends "base" %}
+
+{% block mains %}
+<main>
+    <h2 id="subtitle">Data Engineer, Problem Solver</h2>
+    <p id="text">
+        <span class="highlight">
+            Data and processes accompany me through my entire professional life.
+            As an expert in data and processes, especially in supply chain management,
+            production and their interfaces, who speaks both the technical and
+            the business language and can interpret in between,
+            I contribute strongly to the understanding and better communication of problems.
+        </span>
+    </p>
+</main>
+{% endblock mains %}
