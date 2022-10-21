@@ -1,26 +1,32 @@
 ################
 ##### Builder
 FROM rust as builder
-WORKDIR /rust
 
+# pre build app
+WORKDIR /
 RUN USER=root cargo new app
-COPY Cargo.toml Rocket.toml /rust/app/
-WORKDIR /rust/app
+COPY Cargo.toml Rocket.toml /app/
+WORKDIR /app
 RUN rustup target add x86_64-unknown-linux-musl
 RUN cargo build --target x86_64-unknown-linux-musl --release
 
-COPY src /rust/app/src/
-RUN touch /rust/app/src/main.rs
+# build app
+COPY src /app/src/
+RUN touch /app/src/main.rs
 RUN cargo build --target x86_64-unknown-linux-musl --release
 
 
 ################
 ##### Runtime
-FROM alpine as runner
-COPY --from=builder /rust/app/target/x86_64-unknown-linux-musl/release/multi_page_website /usr/local/bin
-WORKDIR /rust/app
-COPY ./static /rust/app/static
-COPY ./templates /rust/app/templates
+FROM gcr.io/distroless/static-debian11 as runner
+
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/multi_page_website /
+WORKDIR /app
+COPY ./static /app/static
+COPY ./templates /app/templates
+
+# set run env
 ENV ROCKET_ADDRESS=0.0.0.0
 EXPOSE 8000
-CMD ["/usr/local/bin/multi_page_website"]
+
+CMD ["/multi_page_website"]

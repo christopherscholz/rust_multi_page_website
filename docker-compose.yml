@@ -1,0 +1,6 @@
+services:
+  server:
+    container_name: multi-page_server
+    build: .
+    ports:
+      - "8000:8000"
